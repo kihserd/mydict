@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Phrase::factory(10)->create();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        \App\Models\Phrase::truncate();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        \App\Models\Phrase::factory(1)->create();
     }
 }

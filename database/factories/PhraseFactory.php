@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Phrase;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 class PhraseFactory extends Factory
 {
     /**
@@ -21,11 +22,12 @@ class PhraseFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'eng' => $this->faker->name,
-            'rus' => $this->faker->name,
-            'lesson' => 1
+        $fakerRu= \Faker\Factory::create('ru_RU');
 
+        return [
+            'eng' => $this->faker->firstname,
+            'rus' => $fakerRu->firstname,
+            'lesson' => 1
         ];
     }
 }

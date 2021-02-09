@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhraseController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\StatisticController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,15 @@ use App\Http\Controllers\UploadController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [PhraseController::class, 'random']);
+Route::get('phrases/create', [PhraseController::class, 'create']);
+Route::post('phrases', [PhraseController::class, 'store']);
 
 Route::get('/upload', [UploadController::class, 'index']);
 Route::post('/upload', [UploadController::class, 'create']);
 Route::get('/test', [UploadController::class, 'test']);
-Route::get('phrases/create', [PhraseController::class, 'create']);
-Route::post('phrases', [PhraseController::class, 'store']);
+
+
+Route::post('/statistic/{id}/wrong', [StatisticController::class, 'wrong']);
+Route::post('/statistic/{id}/right', [StatisticController::class, 'right']);

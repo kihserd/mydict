@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Phrase;
+use App\Models\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -11,7 +12,6 @@ class UploadController extends Controller
 {
     public function index()
     {
-
         return view('upload.index');
     }
 
@@ -48,11 +48,14 @@ class UploadController extends Controller
 
         Storage::delete($file);
 
-        return back();
+        session()->flash('message', 'Thanks so much for uploading the file!');
+
+        return redirect('/');
     }
 
     public function test()
     {
-
+        
+        return intdiv(1,2);
     }
 }

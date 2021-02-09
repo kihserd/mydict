@@ -22,6 +22,7 @@ class CreatePhrasesTable extends Migration
             $table->integer('lesson')->nullable();
             $table->integer('wrongAnswer')->default(0);
             $table->integer('correctAnswer')->default(0);
+            $table->integer('diff')->default(0);
             $table->timestamps();
         });
     }

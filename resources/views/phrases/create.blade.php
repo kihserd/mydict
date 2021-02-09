@@ -11,7 +11,8 @@
 <body>
     <div class="container">
         <h1>Create phrase.</h1>
-        <form>
+        <form action="/phrases" method="POST">
+            @csrf
             <div class="mb-3">
                 <label for="engTextarea" class="form-label">Eng textarea</label>
                 <textarea class="form-control" id="engTextarea" rows="3" name="engTextarea"></textarea>
@@ -21,25 +22,31 @@
                 <textarea class="form-control" id="rusTextarea" rows="3" name="rusTextarea"></textarea>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="radioType" id="typeWord">
+                <input class="form-check-input" type="radio" name="radioType" id="typeWord" value="word">
                 <label class="form-check-label" for="typeWord">
-                    word
+                    Word
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="radioType" id="typePhrase" checked>
+                <input class="form-check-input" type="radio" name="radioType" id="typePhrase" value="phrase" checked>
                 <label class="form-check-label" for="typePhrase">
-                    phrase
+                    Phrase
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="radioType" id="typeExpression" checked>
+                <input class="form-check-input" type="radio" name="radioType" id="typeExpression" value="expression">
                 <label class="form-check-label" for="typeExpression">
                     Expression
                 </label>
             </div>
+            <button type="submit" class="btn">Create</button>
         </form>
     </div>
+    @if ($flash = session('message')) 
+        <div id="flash-message" role="alert">
+    	    {{ $flash }}
+        </div>
+    @endif
 </body>
 
 </html>
