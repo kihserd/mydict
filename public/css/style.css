@@ -50,6 +50,10 @@ button.wrong {
 }
 
 #flash-message {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: red;
+    color: whitesmoke;
     position: absolute;
     z-index: 10;
     bottom: 20px;
